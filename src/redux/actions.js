@@ -1,12 +1,14 @@
 import * as actions from './actionTypes'
 
+const API_URL = 'https://jsonplaceholder.typicode.com/posts'
+
 // Fetch posts from server
 export const fetchPosts = () => {
   return (dispatch) => {
     dispatch({
       type: actions.FETCH_POSTS_REQUEST,
     })
-    fetch('http://jsonplaceholder.typicode.com/posts')
+    fetch(API_URL)
       .then((res) => res.json())
       .then((posts) =>
         dispatch({
@@ -31,7 +33,7 @@ export const fetchPosts = () => {
 export const postPost = (post) => {
   return (dispatch) => {
     dispatch({ type: actions.POST_POST_REQUEST, payload: { post } })
-    fetch('https://jsonplaceholder.typicode.com/posts', {
+    fetch(API_URL, {
       method: 'POST',
       body: JSON.stringify(post),
       headers: {
@@ -55,7 +57,7 @@ export const postPost = (post) => {
 export const patchPost = (post) => {
   return (dispatch) => {
     dispatch({ type: actions.UPDATE_POST_REQUEST, payload: { id: post.id } })
-    fetch('https://jsonplaceholder.typicode.com/posts/' + 1, {
+    fetch(`${API_URL}/${post.id}`, {
       method: 'PATCH',
       body: JSON.stringify(post),
       headers: {
@@ -79,7 +81,7 @@ export const patchPost = (post) => {
 export const removePost = (id) => {
   return (dispatch) => {
     dispatch({ type: actions.DELETE_POST_REQUEST, payload: { id } })
-    fetch('https://jsonplaceholder.typicode.com/posts/' + id, {
+    fetch(`${API_URL}/${id}`, {
       method: 'DELETE',
     })
       .then(() => {
