@@ -1,0 +1,23 @@
+// Actions to fetch a post
+export const FETCH_POSTS_REQUEST = 'FETCH_POSTS_REQUEST'
+export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS'
+export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE'
+
+// Actions to delete a post
+export const DELETE_POST_REQUEST = 'DELETE_POST_REQUEST'
+export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS'
+export const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE'
+
+// Actions to post a post
+export const POST_POST_REQUEST = 'POST_POST_REQUEST'
+export const POST_POST_SUCCESS = 'POST_POST_SUCCESS'
+export const POST_POST_FAILURE = 'POST_POST_FAILURE'
+
+// Actions to update a post
+export const UPDATE_POST_REQUEST = 'UPDATE_POST_REQUEST'
+export const UPDATE_POST_SUCCESS = 'UPDATE_POST_SUCCESS'
+export const UPDATE_POST_FAILURE = 'UPDATE_POST_FAILURE'
+
+// Actions to toggle a action
+export const TOGGLE_EDIT_MODE = 'TOGGLE_EDIT_MODE'
+export const TOGGLE_UPDATE_MODE = 'TOGGLE_UPDATE_MODE'
