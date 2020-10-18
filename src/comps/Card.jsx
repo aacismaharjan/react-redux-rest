@@ -48,7 +48,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 const mapStateToProps = (store) => {
-  const { postDelete, updatePost } = store.fetchPostReducer
+  const { postDelete, updatePost } = store.postReducer
   return {
     postDelete,
     updatePost,

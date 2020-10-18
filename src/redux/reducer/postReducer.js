@@ -32,7 +32,7 @@ let initialStore = {
   inUpdateMode: false,
 }
 
-const fetchPostReducer = (state = initialStore, action) => {
+const postReducer = (state = initialStore, action) => {
   switch (action.type) {
     // Fetching Reducer
     case actions.FETCH_POSTS_REQUEST:
@@ -186,4 +186,4 @@ const fetchPostReducer = (state = initialStore, action) => {
   }
 }
 
-export default fetchPostReducer
+export default postReducer

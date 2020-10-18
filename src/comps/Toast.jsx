@@ -18,7 +18,7 @@ const Toast = ({ postDelete, postPost, updatePost }) => {
 }
 
 const mapStateToProps = (store) => {
-  const { postDelete, postPost, updatePost } = store.fetchPostReducer
+  const { postDelete, postPost, updatePost } = store.postReducer
   return { postDelete, postPost, updatePost }
 }
 

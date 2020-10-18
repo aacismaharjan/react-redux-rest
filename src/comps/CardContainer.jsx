@@ -23,7 +23,7 @@ function CardContainer({ loading, error, posts }) {
 }
 
 const mapStateToProps = (store) => {
-  const { error, loading, posts } = store.fetchPostReducer
+  const { error, loading, posts } = store.postReducer
   return { error, loading, posts }
 }
 

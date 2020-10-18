@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import fetchPostReducer from './redux/fetchPostReducer'
+import postReducer from './postReducer'
 
 const rootReducer = combineReducers({
-  fetchPostReducer,
+  postReducer,
 })
 export default rootReducer

@@ -96,7 +96,7 @@ function CreatePost({
 }
 
 const mapStateToProps = (store) => {
-  const { updatePost, inEditMode, inUpdateMode } = store.fetchPostReducer
+  const { updatePost, inEditMode, inUpdateMode } = store.postReducer
   return { updatePost, inEditMode, inUpdateMode }
 }
 
