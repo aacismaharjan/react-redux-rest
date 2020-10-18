@@ -1,28 +1,28 @@
 import * as actions from './actionTypes'
+import axios from 'axios'
 
 const API_URL = 'https://jsonplaceholder.typicode.com/posts'
 
-// Fetch posts from server
 export const fetchPosts = () => {
   return (dispatch) => {
     dispatch({
       type: actions.FETCH_POSTS_REQUEST,
     })
-    fetch(API_URL)
-      .then((res) => res.json())
-      .then((posts) =>
+    axios
+      .get(API_URL)
+      .then((res) =>
         dispatch({
           type: actions.FETCH_POSTS_SUCCESS,
           payload: {
-            posts,
+            posts: res.data,
           },
         })
       )
-      .catch(({ message: error }) =>
+      .catch((err) =>
         dispatch({
           type: actions.FETCH_POSTS_FAILURE,
           payload: {
-            error,
+            error: err.message,
           },
         })
       )
@@ -33,16 +33,13 @@ export const fetchPosts = () => {
 export const postPost = (post) => {
   return (dispatch) => {
     dispatch({ type: actions.POST_POST_REQUEST, payload: { post } })
-    fetch(API_URL, {
-      method: 'POST',
-      body: JSON.stringify(post),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    })
-      .then((response) => response.json())
-      .then((data) =>
-        dispatch({ type: actions.POST_POST_SUCCESS, payload: { post: data } })
+    axios
+      .post(API_URL, post)
+      .then((res) =>
+        dispatch({
+          type: actions.POST_POST_SUCCESS,
+          payload: { post: res.data },
+        })
       )
       .catch((err) =>
         dispatch({
@@ -57,16 +54,13 @@ export const postPost = (post) => {
 export const patchPost = (post) => {
   return (dispatch) => {
     dispatch({ type: actions.UPDATE_POST_REQUEST, payload: { id: post.id } })
-    fetch(`${API_URL}/${post.id}`, {
-      method: 'PATCH',
-      body: JSON.stringify(post),
-      headers: {
-        'Content-type': 'application/json;charset=UTF-8',
-      },
-    })
-      .then((response) => response.json())
-      .then((post) => {
-        dispatch({ type: actions.UPDATE_POST_SUCCESS, payload: { post } })
+    axios
+      .patch(`${API_URL}/${post.id}`, post)
+      .then((res) => {
+        dispatch({
+          type: actions.UPDATE_POST_SUCCESS,
+          payload: { post: res.data },
+        })
       })
       .catch((err) =>
         dispatch({
@@ -81,9 +75,8 @@ export const patchPost = (post) => {
 export const removePost = (id) => {
   return (dispatch) => {
     dispatch({ type: actions.DELETE_POST_REQUEST, payload: { id } })
-    fetch(`${API_URL}/${id}`, {
-      method: 'DELETE',
-    })
+    axios
+      .delete(`${API_URL}/${id}`)
       .then(() => {
         dispatch({ type: actions.DELETE_POST_SUCCESS, payload: { id } })
       })
